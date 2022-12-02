@@ -1,15 +1,18 @@
+// faz a conecção com o css e o html
 const texto = document.querySelector('input')
 const btnInsert = document.querySelector('.divInsert button')
 const btnDeleteAll = document.querySelector('.header button')
 const ul = document.querySelector('ul')
 
 var itensDB = []
+// codigo universal para o DB = banco de dados
 
 btnDeleteAll.onclick = () => {
   itensDB = []
   updateDB()
 }
 
+// uma tecla que ira dar um push para add a to-do
 texto.addEventListener('keypress', e => {
   if (e.key == 'Enter' && texto.value != '') {
     setItemDB()
@@ -22,6 +25,7 @@ btnInsert.onclick = () => {
   }
 }
 
+// limite de tarefas & alerta
 function setItemDB() {
   if (itensDB.length >= 20) {
     alert('Limite máximo de 20 itens atingido!')
@@ -45,6 +49,7 @@ function loadItens() {
   })
 }
 
+// adicionar a lista & remover da lista
 function insertItemTela(text, status, i) {
   const li = document.createElement('li')
   
@@ -77,6 +82,7 @@ function done(chk, i) {
   updateDB()
 }
 
+// deletar a lista toda 
 function removeItem(i) {
   itensDB.splice(i, 1)
   updateDB()
